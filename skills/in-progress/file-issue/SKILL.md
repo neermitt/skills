@@ -65,6 +65,7 @@ Present each spotted issue with:
 - What's wrong / what's missing
 - Where it lives (file, function, rough line)
 - Why it matters
+- **Type**: AFK (AI agent can fix unattended) or HITL (needs human decision first)
 
 Ask: "Do these all look right, or anything to add or drop?"
 
@@ -93,13 +94,21 @@ The user can always override.
 
 Write out each draft in full and show them before filing anything. Keep the language natural — these will be read by people, not just parsed by tools. See **Issue templates** below.
 
-Ask: "Does this look good? Anything to adjust before I file it?"
+Ask:
+- "Does the granularity feel right? (too coarse / too fine)"
+- "Should any tickets be merged or split further?"
+- "Are the HITL/AFK labels correct?"
+- "Anything else to adjust before I file?"
+
+Iterate until the user approves.
 
 ---
 
 ## Step 5: File the tickets
 
 Refer to the system-specific reference file for exact commands, metadata fields, and how to map concepts like labels/tags, milestones/sprints, and projects/boards.
+
+File in dependency order — blockers first — so you can reference real ticket IDs in the "Blocked by" field of dependent tickets.
 
 After filing, share the ticket URL(s) or IDs so the user can see them immediately.
 
@@ -114,6 +123,14 @@ Check whether the tracker has a configured template first (e.g. `.github/ISSUE_T
 ### Bug or defect
 
 ```markdown
+## Type
+
+AFK / HITL
+
+## Blocked by
+
+- [ticket reference] or "None - can start immediately"
+
 ## What's happening
 
 [Clear description of what's broken and how it manifests. Be specific — describe
@@ -161,6 +178,14 @@ API contracts — anything that helps an AI agent act on this without manual inv
 ### Tech debt
 
 ```markdown
+## Type
+
+AFK / HITL
+
+## Blocked by
+
+- [ticket reference] or "None - can start immediately"
+
 ## What's the situation
 
 [Describe the current state of the code and why it's getting in the way — slow to
@@ -203,6 +228,14 @@ reverse-engineering intent from the code.]
 ### Security concern
 
 ```markdown
+## Type
+
+HITL (security issues require human review before acting)
+
+## Blocked by
+
+- [ticket reference] or "None - can start immediately"
+
 ## Summary
 
 [One-sentence description of the concern. Avoid exploitation details in public
@@ -241,6 +274,14 @@ an auth bypass.]
 ### Missing tests or documentation
 
 ```markdown
+## Type
+
+AFK / HITL
+
+## Blocked by
+
+- [ticket reference] or "None - can start immediately"
+
 ## What's missing
 
 [Describe the gap: what's not tested, what's not documented, and where.]
@@ -279,6 +320,14 @@ For docs: audience, key questions to answer, format that fits existing docs.]
 ## Grouped ticket (multiple findings, one root cause)
 
 ```markdown
+## Type
+
+AFK / HITL
+
+## Blocked by
+
+- [ticket reference] or "None - can start immediately"
+
 ## Overview
 
 [Explain the shared root cause. What's the underlying pattern or missing piece that
