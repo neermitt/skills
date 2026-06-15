@@ -1,0 +1,11 @@
+{
+  "name": "neermitt-skills",
+  "displayName": "Neermitt Skills",
+  "description": "Personal agentic skills for daily engineering and productivity work",
+  "version": "0.1.0",
+  "author": {
+    "name": "Neeraj Mittal",
+    "email": "neeraj.mittal@gridverse.in"
+  },
+  "skills": "./skills/"
+}

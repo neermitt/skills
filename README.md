@@ -1,2 +1,3 @@
 # skills
-Agentic Skills for everyday use
+
+Agentic Skills for everyday use.
